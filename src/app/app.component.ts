@@ -9,18 +9,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  title = 'pole-star-test';
+  title = 'pole star template';
   constructor(private router: Router) { }
-
   ngOnInit(): void {
     this.router.navigateByUrl('/profile');
-    // this.activatedRoute.data.subscribe((response: any) => {
-    //   if (response['results'].length) {
-    //     response['results'].forEach((proflie) => {
-    //       this.profileData.push(proflie);
-    //     });
-    //   }
-    //   console.log('this.profileData ==>', this.profileData);
-    // });
   }
 }

@@ -17,6 +17,7 @@ export class ProfileComponent implements OnInit {
   nameAscSort = true;
   createdAscSort = true;
   modifiedAscSort = true;
+
   constructor(private activatedRoute: ActivatedRoute, private searchStringPipe: SearchStringPipe) { }
 
   ngOnInit(): void {
@@ -33,18 +34,14 @@ export class ProfileComponent implements OnInit {
   }
 
   sort(colName, sortType) {
-    console.log(sortType);
-    console.log('colName =>', colName);
+    sortType = !sortType;
     if (colName === 'name') {
       this.nameAscSort = !this.nameAscSort;
-    }
-    if (colName === 'created') {
+    } else if (colName === 'created') {
       this.createdAscSort = !this.createdAscSort;
-    }
-    if (colName === 'modified') {
+    } else if (colName === 'modified') {
       this.modifiedAscSort = !this.modifiedAscSort;
     }
-    sortType = !sortType;
     if (!sortType) {
       this.profileData.sort((a, b) => a[colName] < b[colName] ? 1 : a[colName] > b[colName] ? -1 : 0);
     } else {
