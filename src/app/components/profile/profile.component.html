@@ -1,0 +1,78 @@
+<h1 class="title">Pole Start Data</h1>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col" (click)="sort('name', nameAscSort)">
+        <i class="fa fa-fw fa-sort"></i> Name
+      </th>
+      <th scope="col" (click)="sort('created', createdAscSort)">
+        <i class="fa fa-fw fa-sort"></i>
+        Profile created
+      </th>
+      <th scope="col" (click)="sort('modified', modifiedAscSort)">
+        <i class="fa fa-fw fa-sort"></i>
+        Profile modified
+      </th>
+      <th scope="col">Country check severity</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td></td>
+      <td>
+        <input
+          type="text"
+          placeholder="Type to search name..."
+          [(ngModel)]="searchString"
+        />
+      </td>
+      <td></td>
+      <td></td>
+      <td>
+        <form>
+          <label class="checkbox-inline">
+            <input
+              type="checkbox"
+              name="critical"
+              value="criticalStatus"
+              [(ngModel)]="criticalStatus"
+            />Critical
+          </label>
+          <label class="checkbox-inline">
+            <input
+              type="checkbox"
+              name="warning"
+              value="warningStatus"
+              [(ngModel)]="warningStatus"
+            />Warning
+          </label>
+          <label class="checkbox-inline">
+            <input
+              type="checkbox"
+              name="ok"
+              value="okStatus"
+              [(ngModel)]="okStatus"
+            />OK
+          </label>
+        </form>
+      </td>
+    </tr>
+    <tr
+      *ngFor="
+        let profile of profileData
+          | searchStringFilter: 'name':searchString
+          | filterData
+            : 'country_check_severity'
+            : [criticalStatus, warningStatus, okStatus];
+        let i = index
+      "
+    >
+      <td></td>
+      <td>{{ profile.name }}</td>
+      <td>{{ profile.created }}</td>
+      <td>{{ profile.modified }}</td>
+      <td>{{ profile.country_check_severity }}</td>
+    </tr>
+  </tbody>
+</table>
