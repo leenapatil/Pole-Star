@@ -8,15 +8,13 @@ import { ProfileResolverResolver } from './resolver/profile-resolver.resolver';
 import { ProfileComponent } from './components/profile/profile.component';
 import { SearchStringPipe } from './pipe/search-string.pipe';
 import { FilterDataPipe } from './pipe/filter-data.pipe';
-import { SortDirective } from './directives/sort.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProfileComponent,
     SearchStringPipe,
-    FilterDataPipe,
-    SortDirective
+    FilterDataPipe
   ],
   imports: [
     BrowserModule,
